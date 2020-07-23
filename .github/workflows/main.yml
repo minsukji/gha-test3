@@ -47,6 +47,7 @@ jobs:
 
   dnload:
     name: Download artifacts
+    needs: upload
     runs-on: ubuntu-latest
 
     steps:
