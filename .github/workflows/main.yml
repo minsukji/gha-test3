@@ -53,6 +53,9 @@ jobs:
     steps:
     - name: download files
       uses: actions/download-artifact@v2
+      with:
+        name: artifact.tar.bz2
+        path: artifact.tar.bz2
 
     - name: do something with files
       run: |
