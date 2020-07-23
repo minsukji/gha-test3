@@ -61,4 +61,6 @@ jobs:
       run: |
         pwd
         ls -l
+        cd /home/runner/work/gha-test3/gha-test3/artifact.tar.bz2
+        ls -l
 
