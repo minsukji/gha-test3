@@ -1,0 +1,60 @@
+name: Up/Download tests
+
+on:
+  push:
+    branches:
+    - master
+
+jobs:
+  upload:
+    name: Upload artifacts
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: create files
+      run: |
+        touch ci.sh
+        touch image
+        touch README.md
+        tar cvjf image.tar.bz2 image
+        tar cvjf artifact.tar.bz2 ci.sh README.md image.tar.bz2
+        pwd
+        ls -l
+
+    - name: upload files
+      uses: actions/upload-artifact@v2
+      with:
+        name: ci.sh
+        path: ci.sh
+
+    - name: upload files
+      uses: actions/upload-artifact@v2
+      with:
+        name: README.md
+        path: README.md
+
+    - name: upload files
+      uses: actions/upload-artifact@v2
+      with:
+        name: image.tar.bz2
+        path: image.tar.bz2
+
+    - name: upload files
+      uses: actions/upload-artifact@v2
+      with:
+        name: artifact.tar.bz2
+        path: artifact.tar.bz2
+
+  dnload:
+    name: Download artifacts
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: download files
+      uses: actions/download-artifact@v2
+
+    - name: do something with files
+      run: |
+        pwd
+        ls -l
+
