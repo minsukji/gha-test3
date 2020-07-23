@@ -55,12 +55,12 @@ jobs:
       uses: actions/download-artifact@v2
       with:
         name: artifact.tar.bz2
-        path: artifact.tar.bz2
 
     - name: do something with files
       run: |
         pwd
         ls -l
-        cd /home/runner/work/gha-test3/gha-test3/artifact.tar.bz2
+        tar xvjf artifact.tar.bz2
+        tar xvjf image.tar.bz2
         ls -l
 
